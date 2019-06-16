@@ -4,8 +4,8 @@ This is a prototype system of the Credibility Assessment System. This system is 
 ## Directory
 Credibility-Assessment includes some versions and types of an application.
 
-- ver1.0
+- *ver1.0*
 -> The oldest version of the Credibility Assessment System.
 
-- caSystem
+- *caSystem*
 -> The latest version of the Credibility Assessment System. This system is implemented as web application by Django.
