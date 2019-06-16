@@ -8,4 +8,4 @@ Credibility-Assessment includes some versions and types of an application.
 -> The oldest version of the Credibility Assessment System.
 
 - caSystem
--> The web application of Credibility Assessment System that implemented by Django.
+-> The latest version of the Credibility Assessment System. This system is implemented as web application by Django.
