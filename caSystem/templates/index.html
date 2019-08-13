@@ -1,27 +1,27 @@
-{% extends "layout.html" %}
-{% block content %}
-<!--ベースのhtmlレイアウトはlayout.html-->
-<div id = "readme">
-    <h3>Discription</h3>
-    <p>This is a prototype system of the "Credibility Assessment System" for an experiment. Old version is <a href="./../../../imp/credibility_cal_old/index.html" >here</a>. This system was implemented based on my research and some papers. If you want to know about details of this system, you would read my papers please.</p>
-</div><hr>
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+    <title>caSystem</title>
+    <meta charset="UTF-8"/>
+</head>
 
-<div id = "New Calculation Method">
-<!--入力フォーム><-->
+<body>
+    <h3>Credibility Assessment System</h3><hr>
+    <p>This is a prototype system of "Credibility Assessment System" for an experiment. Old version is <a href="./../../../imp/credibility_cal_old/index.html" >here</a>. This system was implemented based on my research and some papers. If you want to know about details of this system, you would read my papers please.</p><hr>
+    <div id = "New Calculation Method">
+    <!--入力フォーム><-->
     <h3>Input Form</h3>
-    <p>Please input the target information that you want to assess credibility here.</p>
+    <p>Please input target information that you want to assess credibility here.</p>
     <form action="./credibility.py" method="post">
-        <input type="text" name="target" value=" "><br>
-        <input type="reset" value="Clear">
-        <input type="submit" value="Send">
-    </form>
-</div>
+    <input type="text" name="target" value=" "><br>
+    <input type="reset" value="Clear">
+    <input type="submit" value="Send">
+    </form></div>
+    <br><br><p>It takes a little bit time to perform.</p><hr>
+    <a href="index.html" style="text-decoration:none;">TOP</a><br>
+    <a href="http://gmsresearch01.komazawa-u.ac.jp/~ken/mypage/index.html" style="text-decoration:none;">Ken Honda WebPage</a><br>
+    <a href="./../../../imp/credibility_cal_old/index.html" >Credibility Calculation System (old version)</a><br>
+    <small>&copy;copyright 2019 Ken Honda.</small>
 
-<br><br><p>It takes a little bit time to perform.</p><hr>
-
-<a href="index.html" style="text-decoration:none;">TOP</a><br>
-<a href="http://gmsresearch01.komazawa-u.ac.jp/~ken/mypage/index.html" style="text-decoration:none;">Ken Honda WebPage</a><br>
-<a href="./../../../imp/credibility_cal_old/index.html" >Credibility Calculation System (old version)</a><br>
-<small>&copy;copyright 2019 Ken Honda.</small>
-
-{% endblock %}
+</body>
+</html>
