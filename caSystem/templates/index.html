@@ -3,20 +3,23 @@
 <head>
     <title>caSystem</title>
     <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">  <!--PATH for css file-->
 </head>
 
 <body>
     <h3>Credibility Assessment System</h3><hr>
     <p>This is a prototype system of "Credibility Assessment System" for an experiment. Old version is <a href="./../../../imp/credibility_cal_old/index.html" >here</a>. This system was implemented based on my research and some papers. If you want to know about details of this system, you would read my papers please.</p><hr>
     <div id = "New Calculation Method">
-    <!--入力フォーム><-->
+    
+    <!--input form-->
     <h3>Input Form</h3>
     <p>Please input target information that you want to assess credibility here.</p>
-    <form action="./credibility.py" method="post">
+    <form action="./../app" method="POST">
     <input type="text" name="target" value=" "><br>
     <input type="reset" value="Clear">
     <input type="submit" value="Send">
     </form></div>
+
     <br><br><p>It takes a little bit time to perform.</p><hr>
     <a href="index.html" style="text-decoration:none;">TOP</a><br>
     <a href="http://gmsresearch01.komazawa-u.ac.jp/~ken/mypage/index.html" style="text-decoration:none;">Ken Honda WebPage</a><br>
