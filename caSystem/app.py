@@ -16,7 +16,7 @@ def creeibility_assessment():
     target = request.form['target']  # get the input from users (form).
     judge_result = nlp_preprocessing.judge_lang(target)  # judge the language type (module: nlp_preprocessing).
     keywords = ""  # This value is used for print the preprocessed target information (It's mainly used for Japanese).
-    output = target  # This value is used to print final result.
+    execution_flag = 0 # This is the flag that would change by the result of preprocessing. It judge weather the system should assess credibility or not.
 
 # Preprocessing for English (英語の前処理) -----------------------------------------------------------------------------------------
     if judge_result == "English":  # If the target information is English,
@@ -25,7 +25,7 @@ def creeibility_assessment():
         if context == 0:  # If context is 0, It means the target is not opinion. 
             keywords = nlp_preprocessing.morpho_en(target)  # get the keywords from the target information.
             if target != "None":  # If the target are not invalid value,
-                excution_flag = 1  # execution flag is 1.
+                execution_flag = 1  # execution flag is 1.
         else:  # It's opinion, nothing to do.
             keywords = nlp_preprocessing.morpho_en(target)  # only print the target information.
             output = "* Error: The credibility assessment can not be processed because the credibility of this informaiton is too low."
@@ -38,12 +38,16 @@ def creeibility_assessment():
         if context == 0:  # 0は伝聞推定ではない．
             keywords = nlp_preprocessing.morpho_ja(target)  # 関数の実行結果(キーワード)を格納
             if target != "Error":  # 値が無効でなければ
-                excution_flag = 2  # 前処理の結果，日本語の信憑性評価を実行
+                execution_flag = 2  # 前処理の結果，日本語の信憑性評価を実行
         else:  # 伝聞推定なので，キーワードだけ表示して信憑性評価は行わない
             keywords = nlp_preprocessing.morpho_ja(target)
             output = "* Error: この情報の信憑性は低いため評価を実行できませんでした．"
     else:
         pass
+
+# Process credibility assessment -------------------------------------------------------------------------------------------------
+    if execution_flag == 1 or execution_flag == 2:
+            output = target
 
 # Output the results -------------------------------------------------------------------------------------------------------------
     return render_template('output.html',  # output view.
