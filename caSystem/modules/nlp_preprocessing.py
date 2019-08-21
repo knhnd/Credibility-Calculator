@@ -49,23 +49,23 @@ def morpho_en(text):
 
 # --------------------------------------------------------------------------------------------------------------------------------
 # Simple context analysis for Japanese text by morphological analysis (modelue: re)
-def context_ja(target):
+def context_ja(text):
     global preprocessing_result  # 結果によって値を変えるフラグ
     t = None  # targetの解析結果を入れるグローバル変数を定義しておく
-# Filtering by Regular Expression (正規表現で伝聞形，推量形は除く)
+    # Filtering by Regular Expression (正規表現で伝聞形，推量形は除く)
     pattern = re.compile(r'だろう|らしい|かもしれない|と思われる|だそうだ|とのこと')  # 伝聞・推定の形を手動で決めている
-    match = pattern.findall(target)
+    match = pattern.findall(text)
     if match:
         return(1)  # 伝聞・推定形の場合1を返す
     else:
         return(0)  # 伝聞・推定形でなければ0を返す
 
 # --------------------------------------------------------------------------------------------------------------------------------
-# 形態素解析で日本語文章の名詞・動詞を抽出(ストップワードの削除)
-def morpho_ja(target):
+# 形態素解析で日本語文章の名詞・動詞を抽出，ストップワードの削除 (module: MeCab)
+def morpho_ja(text):
     tagger = MeCab.Tagger()  # MeCabのインスタンス
     tagger.parse('')  # 一度空の文字列をparseしないとエラー
-    text_node = tagger.parseToNode(target)  # 解析
+    text_node = tagger.parseToNode(text)  # 解析
     words_ja = []  # 単語を格納するリスト．ここにtextの名詞が格納される
     while text_node:
         word = text_node.surface.split(",")[0]  # surfaceは単語を取得
