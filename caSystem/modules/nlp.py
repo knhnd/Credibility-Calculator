@@ -79,6 +79,12 @@ def morpho_ja(text):
     return result
 
 # --------------------------------------------------------------------------------------------------------------------------------
+# split string by ,(comma) and " "(space) and make list. 
+def make_list(str):
+    words = str.split()
+    return words
+
+# --------------------------------------------------------------------------------------------------------------------------------
 # Remove URL
 def clean_url(html_text):
     clean_text = re.sub(r'http\S+', '', html_text)

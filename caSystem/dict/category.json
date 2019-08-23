@@ -1,0 +1,8 @@
+{
+"Disaster":["disaster","earthquake","flood","storm","hurricane","thunder","fire","evacuate","evacuated","災害","地震","雷","火事","台風","豪雨","洪水","津波","震災","暴風","避難","警告","緊急","注意報","警報","311"],
+"Accident":["accident","crash","car","plane","ship","air plane","slip","事故","衝突","追突","墜落","転落","横転","沈没","脱線","接触","水難","渋滞","遅延","故障","飛び出し","車","電車","船","飛行機"],
+"Terrorism":["terrorism","terro","terrorist","terrorists","isram","israms","air plane","911","muslim","muslims","jack","religion","shoot","bio","hostage","convert","テロリズム","テロ","テロリスト","自爆","飛行機","同時多発","過激派","宗教","イラン","イスラム","爆弾","アフガニスタン","核","デモ","乱射","改宗"],
+"Medical":["medical","hospital","docter","patient","operation","nurse","medicine","surgery","miss","ambulance","life","save","aid","医療","病院","医者","患者","手術","看護師","薬","救急","ミス","病気","救命"],
+"Society":["society","incident","legend","low","crowd","murder","rape","vaiolence","discrimination","race","urban","trend","conspiracy","thief","theft","robbery","police","hostage","hostages","hold","held","社会","事件","伝説","都市","陰謀","法","集団","流行","自殺","殺人","盗難","窃盗","強姦","強盗","暴行","ストーカー","痴漢","薬物","麻薬","差別","人種"],
+"Politics":["politics","war","conflict","diet","prime","minister","low","order","president","demonstration","trump","country","parliament","policy","economy","power","domination","immigration","autonomy","refugees","政治","戦争","紛争","冷戦","国会","議員","官僚","デモ","権力","国家","議会","首相","大統領","支配","政策","経済","主権","自治","人民","移民","難民","トランプ","マクロン","法律","憲法","内閣","与党","野党","民主","主義","資本","議論","行政","領土"]
+}

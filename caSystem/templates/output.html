@@ -14,7 +14,15 @@
     <p>Language : {{language}}</p>
     <p>Keywords : {{keywords}}</p>
     <hr>
+    <h5>・Matching Data Sources</h5>
+    <h5>Information Source | Headline</h5>
+    {% if otype == 1  %}  <!-- if output type is list -->
+    {% for outputs in output %}  <!-- get each elements -->
+    <p>{{outputs}}</p>  <!-- and print -->
+    {% endfor %}
+    {%else%}  <!-- if output type is str -->
     <p>{{output}}</p>
+    {%endif%}
     
     <hr>
     <a href="./.." style="text-decoration:none;">Back</a><br>
