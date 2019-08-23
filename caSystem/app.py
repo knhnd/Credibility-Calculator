@@ -1,5 +1,6 @@
 #!coding:utf-8
 # Manage application and rooting (includes main script of the application)
+import os
 from flask import Flask, render_template, request
 from modules import nlp
 from modules import db_operation
