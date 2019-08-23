@@ -73,4 +73,5 @@ def creeibility_assessment():
 
 if __name__=='__main__':
     app.debug = True  # debug mode ON.
-    app.run(host='localhost')  # run localhost.
+    #app.run(host='localhost')  # run localhost.
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))  # run heroku.
