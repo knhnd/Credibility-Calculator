@@ -1,1 +1,1 @@
-web: gunicorn app.py/caSystem:app --log-file -
+web: gunicorn caSystem:app --log-file -
