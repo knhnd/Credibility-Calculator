@@ -3,7 +3,6 @@
 # Preprocessing module for NLP.
 import re
 import nltk
-#import MeCab
 import unicodedata
 from bs4 import BeautifulSoup
 from nltk.corpus import wordnet
