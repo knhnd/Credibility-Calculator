@@ -62,21 +62,21 @@ def context_ja(text):
 
 # --------------------------------------------------------------------------------------------------------------------------------
 # 形態素解析で日本語文章の名詞・動詞を抽出，ストップワードの削除 (module: MeCab)
-def morpho_ja(text):
-    tagger = MeCab.Tagger()  # MeCabのインスタンス
-    tagger.parse('')  # 一度空の文字列をparseしないとエラー
-    text_node = tagger.parseToNode(text)  # 解析
-    words_ja = []  # 単語を格納するリスト．ここにtextの名詞が格納される
-    while text_node:
-        word = text_node.surface.split(",")[0]  # surfaceは単語を取得
-        pos = text_node.feature.split(",")[0]  # featureは品詞(PartsOfSpeech)を取得
-        if pos == "名詞" or pos == "動詞":  # 文章に名詞か動詞が含まれたら
-            words_ja.append(word)  # その単語を取り出していく
-        text_node = text_node.next  # nextで全形態素に順次アクセス
-    if not words_ja:
-        words_ja.append("Error")
-    result = " ".join(words_ja)  # 抜き出したキーワードを文字列に変換し，空白で繋げて格納
-    return result
+# def morpho_ja(text):
+#     tagger = MeCab.Tagger()  # MeCabのインスタンス
+#     tagger.parse('')  # 一度空の文字列をparseしないとエラー
+#     text_node = tagger.parseToNode(text)  # 解析
+#     words_ja = []  # 単語を格納するリスト．ここにtextの名詞が格納される
+#     while text_node:
+#         word = text_node.surface.split(",")[0]  # surfaceは単語を取得
+#         pos = text_node.feature.split(",")[0]  # featureは品詞(PartsOfSpeech)を取得
+#         if pos == "名詞" or pos == "動詞":  # 文章に名詞か動詞が含まれたら
+#             words_ja.append(word)  # その単語を取り出していく
+#         text_node = text_node.next  # nextで全形態素に順次アクセス
+#     if not words_ja:
+#         words_ja.append("Error")
+#     result = " ".join(words_ja)  # 抜き出したキーワードを文字列に変換し，空白で繋げて格納
+#     return result
 
 # --------------------------------------------------------------------------------------------------------------------------------
 # split string by ,(comma) and " "(space) and make list. 
