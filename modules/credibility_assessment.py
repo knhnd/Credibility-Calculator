@@ -1,4 +1,4 @@
-#!/usr/local/bin/python3
+heroku#!/usr/local/bin/python3
 #_*_coding:utf-8_*_
 # This is a credibility assessment module.
 from . import nlp
