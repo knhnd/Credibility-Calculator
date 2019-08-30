@@ -1,0 +1,4 @@
+{
+"motion_sensor":["disaster","earthquake","fire","evacuate","evacuated","災害","地震","火事","津波","震災","避難","警告","緊急","注意報","警報","311"],
+"weather_sensor":["disaster","flood","storm","hurricane","thunder","evacuate","evacuated","災害","雷","台風","豪雨","洪水","暴風","土砂","避難","警告","緊急","注意報","警報"]
+}

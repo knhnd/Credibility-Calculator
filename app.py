@@ -1,6 +1,6 @@
 #!coding:utf-8
 # Manage application and rooting (includes main script of the application)
-import os
+import os, json
 from flask import Flask, render_template, request
 from modules import nlp
 from modules import db_operation
@@ -18,13 +18,13 @@ def index():
 def creeibility_assessment():
     target = request.form['target']  # get the input from users (form).
     judge_result = nlp.judge_lang(target)  # judge the language type (module: nlp_preprocessing).
-    
     # values
-    keywords = ""  # This value is used for print the preprocessed target information (It's mainly used for Japanese).
+    keywords = []  # This value is used for print the preprocessed target information (It's mainly used for Japanese).
     result = []  # This value is final output value.
     execution_flag = 0 # This is the flag that would change by the result of preprocessing. It judge weather the system should assess credibility or not.
-    output = ""  # to print final output.
     otype = 0  # this is the flag to evaluate output type (str or list)
+    score = 0  # final value of credibility.
+    output = ""  # to print final output.
 
 # Preprocessing for English (英語の前処理) -----------------------------------------------------------------------------------------
     if judge_result == "English":  # If the target information is English,
@@ -56,24 +56,40 @@ def creeibility_assessment():
 
 # Process credibility assessment -------------------------------------------------------------------------------------------------
     if execution_flag == 1 or execution_flag == 2:
-        result = credibility_assessment.match_rss(keywords)  # matching target information with rss(news) data from database.
-        output = result  # matching result.
-        if type(output) is list:  # if return is list,
+        # matching target information with rss(news) data from database.
+        result_rss = credibility_assessment.match_rss(keywords)
+        rss = result_rss  # matching result.
+        if type(rss) is list:  # if return is list,
             otype = 1  # output is list.
         else:
             otype = 0  # output is str.
+        
+        # matching target information with sensor data from database.
+        json_file = "./dict/sensor.json"  # This json file includes keywords for trigger of sensor.
+        json_data = json.load(open(json_file))  # open json file.
+        sensor_type = []
+        words = keywords.split(' ')  # split keywords by space. 
+        for word in words:  # get keyword one by one.
+            for key in json_data.keys():  # get key from json one by one.
+                for data in json_data[key]:  # get element from key one by one.
+                    if word in data:  # get trigger from dictionary(json).  
+                        sensor_type.append(key)
+        stype = set(sensor_type)
+        sensor = credibility_assessment.match_sensor(stype)
 
 # Output the results -------------------------------------------------------------------------------------------------------------
     return render_template('output.html',  # output view.
         target = target,  # print input information from users.
         language = judge_result,  # print language type.
         keywords = keywords,  # print keywords.
+        score = score,  # final value of credibility
         otype = otype,  # which type is the value of "output" str or list.
-        output = output  # print the result.
+        rss = rss, # news data.
+        sensor = sensor,  # sensor data.
+        output = output  # print some results.
         )
 
 if __name__=='__main__':
     app.debug = True  # debug mode ON.
-    #app.run()
-    #app.run(host='localhost')  # run localhost.
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))  # run heroku.
+    app.run(host='localhost')  # run localhost.
+    #app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))  # run heroku.

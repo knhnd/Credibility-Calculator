@@ -14,15 +14,18 @@
     <p>Language : {{language}}</p>
     <p>Keywords : {{keywords}}</p>
     <hr>
-    <h5>・Matching Data Sources</h5>
-    <h5>Information Source | Headline</h5>
+    <h5>---[ Data Sources ]---</h5>
+    <h6>Information Source | Headline</h6>
     {% if otype == 1  %}  <!-- if output type is list -->
-    {% for outputs in output %}  <!-- get each elements -->
+    {% for outputs in rss %}  <!-- get each elements -->
     <p>{{outputs}}</p>  <!-- and print -->
     {% endfor %}
     {%else%}  <!-- if output type is str -->
-    <p>{{output}}</p>
+    <p>{{rss}}</p>
     {%endif%}
+    <h5>---[ Sensor Data ]---</h5>
+    <h6>Sensor Type | Value</h6>
+    <p>{{sensor}}</p> 
     
     <hr>
     <a href="./.." style="text-decoration:none;">Back</a><br>

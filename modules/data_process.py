@@ -6,28 +6,23 @@ import json
 import sqlite3
 import subprocess
 
-# ディレクトリの操作
-def directory():
+# Directory operation
+def directory(dir_name, subdir_name):
     # 探索するディレクトリを指定("./dataset")するとループ一回毎に中のディレクトリを取得しdirへ
     # その中のサブディレクトリをリストにしてsubdirへ, その下のファイルを全てfilesへ(今回はsubdirはない)
-    for dir, subdir, files in os.walk("./dataset/rumors"):
-        if dir == "./dataset/rumors/ottawa_shooting":  # 指定したディレクトリなら(germanwings_crash, ottawa_shooting, sydney_siege)
+    for dir, subdir, files in os.walk(dir_name):
+        if dir == subdir_name:  # 指定したディレクトリなら(germanwings_crash, ottawa_shooting, sydney_siege)
             for file_name in files:  # 中のファイルを取得していく(全てstrなので実際のデータではない)
-                print(file_name)
-    return "Success!"
-#directory()
+    return file_name
 
-# jsonデータの処理
-def json_processing(file_name):
-    json_file = file＿name  # JSONファイルを指定
-    #json_file = "./dataset/rumors/ottawa_shooting" + file_name  # JSONファイルのパスを指定(パスを手動で入れる場合)
-    json_data = json.load(open(json_file))  # jsonファイルを開く
-    json_time = json_data["created_at"]  # jsonデータ内の時間(created_at)を取得
-    json_text = json_data["text"]  # jsonデータ内の本文(text)を取得
-    json_dataset = [json_time, json_text]  # 取得したjsonデータの時間と本文をセットにする
-    print(json_dataset)
-    return "Success!"
-#json_processing()
+# Get json data from json file
+def get_json(file_name, key, val):
+    json_file = file＿name  # json file name and the path.
+    json_data = json.load(open(json_file))  # open json file.
+    json_key = json_data[key]  # jsonデータ内の時間(created_at)を取得
+    json_value = json_data[val]  # jsonデータ内の本文(text)を取得
+    json_dataset = [json_key, json_value]  # 取得したjsonデータの時間と本文をセットにする
+    return json_dataset
 
 # 指定したファイルを別のディレクトリに移動する
 def data_move():

@@ -1,12 +1,12 @@
-heroku#!/usr/local/bin/python3
+#!/usr/local/bin/python3
 #_*_coding:utf-8_*_
 # This is a credibility assessment module.
 from . import nlp
 from . import db_operation
 
 # Matching target information with RSS(NEWS) data from database 
-def match_rss(str):
-    keyword_list = nlp.make_list(str)  # make list from keywords to use credibility assessment.
+def match_rss(string):
+    keyword_list = nlp.make_list(string)  # make list from keywords to use credibility assessment.
     match = []
     result = []  # this list is for return.
     news_data = db_operation.get_data_mysql()  # get news_data(source and headlilne) from database. 
@@ -31,8 +31,12 @@ def match_rss(str):
         return result  # return result.
     else:  # if result is empty,
         return "No match inforamtion found. Please check about this information."  # return this alert.
-        
-# Matching target information with sensor data from database 
-def match_sensor(str):
-    sensor = 0
-    return sensor
+
+# Matching target information with sensor data from database
+def match_sensor(sensor_type):
+    stype = sensor_type  # get sensor type.
+    match = []
+    result = []
+    sensor_data = db_operation.get_sensor_mysql(stype)
+    result = sensor_data
+    return result
