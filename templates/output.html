@@ -14,6 +14,10 @@
     <p>Language : {{language}}</p>
     <p>Keywords : {{keywords}}</p>
     <hr>
+    <p>Credibility Score : {{score}}</p>
+    <p>{{message}}</p>
+    <br>
+
     <h5>---[ Data Sources ]---</h5>
     <h6>Information Source | Headline</h6>
     {% if otype == 1  %}  <!-- if output type is list -->
@@ -23,8 +27,9 @@
     {%else%}  <!-- if output type is str -->
     <p>{{rss}}</p>
     {%endif%}
+
     <h5>---[ Sensor Data ]---</h5>
-    <h6>Sensor Type | Value</h6>
+    <h6>Sensor</h6>
     <p>{{sensor}}</p> 
     
     <hr>

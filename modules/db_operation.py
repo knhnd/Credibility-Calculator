@@ -2,6 +2,7 @@
 #_*_coding:utf-8_*_
 # Database operation module
 import sqlite3
+import collections
 import mysql.connector
 
 # Get RSS data from credibilityDB
@@ -20,17 +21,27 @@ def get_data_mysql():
 # get sensor data from credibilityDB
 # (Module: mysql.connector)
 def get_sensor_mysql(stype):
+    data = []
+    result = []
     conn = mysql.connector.connect(user='root', password='Rootpassword', host='localhost', database='credibilityDB')  # databse info.
     cur = conn.cursor()  # cusor.
-    cur.execute("select sensor_type, sensor_data from sensor_data;")  # get source name and headline from sensor data. 
 
-# stypeに一致するセンサidのデータのうち反応しているもののみを抽出する
+    if stype == 0:
+        cur.execute("select sensor_type, sensor_data from sensor_data;")  # get sensor name and the value from sensor data.
+    elif stype == 1:
+        cur.execute("select sensor_type, sensor_data from sensor_data where sensor_type = 'motion_sensor';")
+    elif stype == 2:
+        cur.execute("select sensor_type, sensor_data from sensor_data where sensor_type = 'weather_sensor';")
 
-
-    data = []
     for row in cur.fetchall():
-        data.append(row)
-    return data
+        if row[1] != 0:  # if the sensor actuate,
+            data.append(row[0])  # append. センサが反応している(1)ものだけを抽出.
+    if not data:
+        return "No sensors found."
+    else:
+        sdata = collections.Counter(data)
+        return list(sdata)
+
     cur.close
     cur.conn  # disconnect from DB.
 

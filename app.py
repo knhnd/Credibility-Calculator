@@ -63,29 +63,22 @@ def creeibility_assessment():
             otype = 1  # output is list.
         else:
             otype = 0  # output is str.
-        
         # matching target information with sensor data from database.
-        json_file = "./dict/sensor.json"  # This json file includes keywords for trigger of sensor.
-        json_data = json.load(open(json_file))  # open json file.
-        sensor_type = []
-        words = keywords.split(' ')  # split keywords by space. 
-        for word in words:  # get keyword one by one.
-            for key in json_data.keys():  # get key from json one by one.
-                for data in json_data[key]:  # get element from key one by one.
-                    if word in data:  # get trigger from dictionary(json).  
-                        sensor_type.append(key)
-        stype = set(sensor_type)
-        sensor = credibility_assessment.match_sensor(stype)
+        sensor = credibility_assessment.match_sensor(keywords)
+
+        # calculate ratio
+        score = credibility_assessment.calculate(target, rss, sensor)
 
 # Output the results -------------------------------------------------------------------------------------------------------------
     return render_template('output.html',  # output view.
         target = target,  # print input information from users.
         language = judge_result,  # print language type.
         keywords = keywords,  # print keywords.
-        score = score,  # final value of credibility
+        score = score[0],  # final value of credibility
+        message = score[1],
         otype = otype,  # which type is the value of "output" str or list.
         rss = rss, # news data.
-        sensor = sensor,  # sensor data.
+        sensor = sensor[0],  # sensor data.
         output = output  # print some results.
         )
 

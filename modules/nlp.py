@@ -80,9 +80,18 @@ def morpho_ja(text):
 
 # --------------------------------------------------------------------------------------------------------------------------------
 # split string by ,(comma) and " "(space) and make list. 
-def make_list(str):
-    words = str.split()
+def make_list(string):
+    words = string.split()
     return words
+
+# split string by ,(comma) and space.
+def replace(string):
+    nwords = []
+    words = string.split(",")
+    for word in words:
+        w = word.strip()
+        nwords.append(w)
+    return nwords
 
 # --------------------------------------------------------------------------------------------------------------------------------
 # Remove URL
