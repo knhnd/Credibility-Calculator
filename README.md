@@ -1,4 +1,4 @@
-# *Credibility Assessment System*
+# *Credibility Calculator*
 This is a prototype system of the *Credibility Assessment System*. This system is implemented for an experiment. This is the most basic aplication of our research. And the method of this system is based on our papers (https://kenpage-f5ac9.firebaseapp.com/). But the method is improved little by little.
 
 ## Directory
