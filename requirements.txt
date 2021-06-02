@@ -6,4 +6,4 @@ Janome==0.3.6
 Jinja2==2.10
 mysql-connector-python==8.0.17
 nltk==3.4.4
-urllib3==1.22
+urllib3==1.26.5
